@@ -10,25 +10,26 @@ import fr.litarvan.monopoly.MonopolyGame
 
 abstract class GameScreen(game: MonopolyGame) : OMScreen(game)
 {
-    protected val cam = PerspectiveCamera(67f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat()).act {
-        near = 1f
-        far = 300f
-    }
-
-    protected val environment = Environment().apply {
-        add(DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f))
-        set(ColorAttribute(ColorAttribute.AmbientLight, 1f, 1f, 1f, 1f))
-    }
-
+    protected val cam = PerspectiveCamera(67f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
+    protected val environment = Environment()
     private val worldBatch = ModelBatch()
-
     private var background = ModelInstance(Assets.model("background"))
     private val backgroundBatch = ModelBatch()
-    private val backgroundEnvironment = Environment().apply {
-        set(ColorAttribute(ColorAttribute.AmbientLight, 1f, 1f, 1f, 1f))
-    }
-
+    private val backgroundEnvironment = Environment()
     private val objects = arrayListOf<GameObject>()
+
+    init
+    {
+        cam.act {
+            near = 1f
+            far = 300f
+        }
+
+        environment.add(DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f))
+        environment.set(ColorAttribute(ColorAttribute.AmbientLight, 1f, 1f, 1f, 1f))
+
+        backgroundEnvironment.set(ColorAttribute(ColorAttribute.AmbientLight, 1f, 1f, 1f, 1f))
+    }
 
     fun add(obj: GameObject)
     {

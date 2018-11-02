@@ -10,7 +10,7 @@ import fr.litarvan.monopoly.Assets
 
 class GameObject(model: String) : RenderableProvider
 {
-    private val model: ModelInstance = ModelInstance(Assets.model(model))
+    private val model = ModelInstance(Assets.model(model))
 
     var x: Float
         get() = model.transform.`val`[Matrix4.M03]

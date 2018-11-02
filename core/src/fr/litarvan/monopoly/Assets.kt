@@ -12,7 +12,6 @@ object Assets
         "board"         to "model:Board.g3db"
     )
 
-
     private val loader = AssetManager()
 
     fun model(name: String): Model = asset(name)

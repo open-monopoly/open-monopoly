@@ -7,7 +7,7 @@ import fr.litarvan.monopoly.MonopolyGame
 object DesktopLauncher
 {
     @JvmStatic
-    fun main(arg: Array<String>)
+    fun main(args: Array<String>)
     {
         val config = LwjglApplicationConfiguration()
         config.title = "OpenMonopoly ${MonopolyGame.VERSION}"

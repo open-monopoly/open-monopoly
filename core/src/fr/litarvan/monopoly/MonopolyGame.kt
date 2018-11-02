@@ -1,4 +1,4 @@
-    package fr.litarvan.monopoly
+package fr.litarvan.monopoly
 
 import com.badlogic.gdx.Gdx.*
 import com.badlogic.gdx.graphics.GL20
