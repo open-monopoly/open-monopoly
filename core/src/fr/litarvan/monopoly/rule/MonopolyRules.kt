@@ -2,7 +2,7 @@ package fr.litarvan.monopoly.rule
 
 import java.util.*
 
-class MonopolyGame(players: Array<Player>)
+class MonopolyRules(players: Array<Player>)
 {
     private val random = Random()
     private val history = EventHistory(GameState(0, random.nextInt(players.size), 0, false, players))
