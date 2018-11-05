@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.GL20
 import fr.litarvan.monopoly.core.OMScreen
 import ktx.app.KtxGame
 
-class MonopolyGame : KtxGame<OMScreen>()
+class OpenMonopoly : KtxGame<OMScreen>()
 {
     override fun create()
     {

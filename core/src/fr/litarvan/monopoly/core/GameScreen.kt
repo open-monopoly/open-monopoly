@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.g3d.*
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight
 import fr.litarvan.monopoly.Assets
-import fr.litarvan.monopoly.MonopolyGame
+import fr.litarvan.monopoly.OpenMonopoly
 
-abstract class GameScreen(game: MonopolyGame) : OMScreen(game)
+abstract class GameScreen(game: OpenMonopoly) : OMScreen(game)
 {
     protected val cam = PerspectiveCamera(67f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
     protected val environment = Environment()

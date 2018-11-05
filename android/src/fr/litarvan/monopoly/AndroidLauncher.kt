@@ -15,7 +15,7 @@ class AndroidLauncher : AndroidApplication()
         config.hideStatusBar = true
         config.numSamples = 2 // Antialias
 
-        initialize(MonopolyGame(), config)
+        initialize(OpenMonopoly(), config)
 
         // Don't forget on the bottom : https://github.com/libgdx/libgdx/wiki/Managing-your-assets
     }

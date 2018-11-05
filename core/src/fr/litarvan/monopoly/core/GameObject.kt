@@ -1,5 +1,6 @@
 package fr.litarvan.monopoly.core
 
+import com.badlogic.gdx.graphics.g3d.Model
 import com.badlogic.gdx.graphics.g3d.ModelInstance
 import com.badlogic.gdx.graphics.g3d.Renderable
 import com.badlogic.gdx.graphics.g3d.RenderableProvider
@@ -8,9 +9,19 @@ import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.Pool
 import fr.litarvan.monopoly.Assets
 
-class GameObject(model: String) : RenderableProvider
+class GameObject: RenderableProvider
 {
-    private val model = ModelInstance(Assets.model(model))
+    private val model: ModelInstance
+
+    constructor(model: String)
+    {
+        this.model = ModelInstance(Assets.model(model))
+    }
+
+    constructor(model: Model)
+    {
+        this.model = ModelInstance(model)
+    }
 
     var x: Float
         get() = model.transform.`val`[Matrix4.M03]

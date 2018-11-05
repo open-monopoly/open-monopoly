@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import fr.litarvan.monopoly.core.OMScreen
 
-class LoadingScreen(game: MonopolyGame) : OMScreen(game)
+class LoadingScreen(game: OpenMonopoly) : OMScreen(game)
 {
     private val renderer = ShapeRenderer()
 
