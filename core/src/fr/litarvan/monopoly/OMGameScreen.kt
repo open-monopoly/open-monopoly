@@ -34,10 +34,11 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
         players.forEach { this += it }
 
         cam.act {
-            //position.set(-15f, 10f, -15f)
-            //lookAt(7.5f, -2.5f, 7.5f)
-            position.set(0f, 20f, 0f)
-            lookAt(0f, 0f, 0f)
+            position.set(-15f, 10f, -15f)
+            lookAt(7.5f, -2.5f, 7.5f)
+
+            /*position.set(0f, 20f, 0f)
+            lookAt(0f, 0f, 0f)*/
         }
 
         update()
@@ -53,8 +54,6 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
         rules.state.players.forEachIndexed { i, player ->
             var x = 0f
             var z = 0f
-
-            player.pos = 37
 
             if (player.pos < 10) {
                 x = -shift
