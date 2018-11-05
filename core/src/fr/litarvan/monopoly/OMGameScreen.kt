@@ -13,8 +13,6 @@ import fr.litarvan.monopoly.rule.Player
 
 class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 {
-    private val boardSize = 20f
-
     private val board = GameObject("board")
     private val rules = MonopolyRules(arrayOf(Player("Litarvan", Color.BLUE), Player("Zbeub", Color.YELLOW)))
     private val players = mutableListOf<GameObject>()
@@ -24,26 +22,22 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
         this += board
 
         val builder = ModelBuilder()
-        var x = -(boardSize / 2f) + 1f - 0.75f
 
         rules.state.players.forEach {
             val obj = GameObject(builder.createBox(0.25f, 0.25f, 0.25f,
                     Material(ColorAttribute.createDiffuse(it.color)),
                     (VertexAttributes.Usage.Position or VertexAttributes.Usage.Normal).toLong()))
 
-            /*obj.x = x + 0.175f
-            obj.z = -(boardSize / 2f) + 1f + 0.175f
-            obj.y = 0.25f
-
-            x += 1.5f*/
             players += obj
         }
 
         players.forEach { this += it }
 
         cam.act {
-            position.set(-15f, 10f, -15f)
-            lookAt(7.5f, -2.5f, 7.5f)
+            //position.set(-15f, 10f, -15f)
+            //lookAt(7.5f, -2.5f, 7.5f)
+            position.set(0f, 20f, 0f)
+            lookAt(0f, 0f, 0f)
         }
 
         update()
@@ -51,24 +45,48 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 
     fun update()
     {
-        val edgeCenter = 1.175f
+        val shift = Board.renderSize / 2f - Board.outerBorder - Board.caseHeight / 2f
+        val pShift = 0.4f
 
-        val shift = -(boardSize / 2f) + edgeCenter
-        val pShift = 0.45f
-
-        val caseShift = (boardSize - (edgeCenter * 4f)) / 11f
-        val caseCenter = caseShift / 2f
+        val step = { pos: Int -> Board.caseHeight / 2f + (Board.innerBorder + Board.caseWidth) * (pos % 10) - Board.caseWidth / 2f }
 
         rules.state.players.forEachIndexed { i, player ->
             var x = 0f
             var z = 0f
 
+            player.pos = 37
+
             if (player.pos < 10) {
+                x = -shift
+                z = -shift
+
+                if (player.pos > 0) {
+                    x += step(player.pos)
+                    z -= Board.caseTop / 2
+                }
+            } else if (player.pos < 20) {
+                x = shift
+                z = -shift
+
+                if (player.pos > 10) {
+                    z += step(player.pos)
+                    x += Board.caseTop / 2
+                }
+            } else if (player.pos < 30) {
                 x = shift
                 z = shift
 
-                if (player.pos == 0) {
-                    x += edgeCenter + caseCenter + (caseCenter * player.pos)
+                if (player.pos > 20) {
+                    x -= step(player.pos)
+                    z += Board.caseTop / 2
+                }
+            } else if (player.pos < 40) {
+                x = -shift
+                z = shift
+
+                if (player.pos > 30) {
+                    z -= step(player.pos)
+                    x -= Board.caseTop / 2
                 }
             }
 

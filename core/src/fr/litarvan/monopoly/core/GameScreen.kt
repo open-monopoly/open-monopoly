@@ -20,11 +20,6 @@ abstract class GameScreen(game: OpenMonopoly) : OMScreen(game)
 
     init
     {
-        cam.act {
-            near = 1f
-            far = 300f
-        }
-
         environment.add(DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f))
         environment.set(ColorAttribute(ColorAttribute.AmbientLight, 1f, 1f, 1f, 1f))
 

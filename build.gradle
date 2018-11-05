@@ -114,6 +114,7 @@ project(":core") {
         compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
         compile "io.github.libktx:ktx-app:$ktxVersion"
         compile "io.github.libktx:ktx-graphics:$ktxVersion"
+        compile 'net.sf.trove4j:trove4j:3.0.3'
     }
 }
 
