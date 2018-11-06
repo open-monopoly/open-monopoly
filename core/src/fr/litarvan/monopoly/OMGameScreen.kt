@@ -1,5 +1,7 @@
 package fr.litarvan.monopoly
 
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.VertexAttributes
 import com.badlogic.gdx.graphics.g3d.Material
@@ -8,13 +10,12 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder
 import fr.litarvan.monopoly.core.GameObject
 import fr.litarvan.monopoly.core.GameScreen
 import fr.litarvan.monopoly.core.act
-import fr.litarvan.monopoly.rule.MonopolyRules
-import fr.litarvan.monopoly.rule.Player
+import fr.litarvan.monopoly.rule.*
 
 class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 {
     private val board = GameObject("board")
-    private val rules = MonopolyRules(arrayOf(Player("Litarvan", Color.BLUE), Player("Zbeub", Color.YELLOW)))
+    private val rules = MonopolyRules(arrayOf(Player("Litarvan", Color.BLUE), Player("Zbeub", Color.ORANGE)))
     private val players = mutableListOf<GameObject>()
 
     init
@@ -46,6 +47,19 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 
     fun update()
     {
+        val events = rules.poll()
+        events.forEach {
+            when (it) {
+                is DiceRoll           -> println("Player {${it.player}} roll dices : ${it.first} & ${it.second}" + (if (it.first == it.second) " [DOUBLE]" else ""))
+                is PlayerMovement     -> println("Player {${it.player}} move (${it.type}) of/to  ${it.ofOrTo}")
+                is TurnEnd            -> println("Player {${it.player}} end turn")
+                is PlayerReceiveMoney -> println("Player {${it.player}) receives ${it.amount}$")
+                is PlayerJailed       -> println("Player {${it.player}} is JAILED !")
+                is PlayerUnjailed     -> println("Player {${it.player}} is FREED from jail !")
+                else                  -> println("Event : $it")
+            }
+        }
+
         val shift = Board.renderSize / 2f - Board.outerBorder - Board.caseHeight / 2f
         val pShift = 0.4f
 
@@ -111,6 +125,23 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
             players[i].x = x
             players[i].z = z
             players[i].y = 0.25f
+        }
+    }
+
+    override fun render(delta: Float)
+    {
+        super.render(delta)
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
+            rules.roll()
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.E)) {
+            rules.endTurn()
+        }
+
+        if (rules.hasPoll) {
+            update()
         }
     }
 }

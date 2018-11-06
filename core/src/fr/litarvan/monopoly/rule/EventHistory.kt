@@ -8,16 +8,18 @@ class EventHistory(val base: GameState)
     val events: Array<Event>
         get() = history.toTypedArray()
 
-    val state: GameState
-        get() = cache.copy()
-
     val size: Int
         get() = history.size
+
+    var state = cache.copy()
+        private set
 
     fun emit(event: Event)
     {
         history += event
-        cache = build()
+        //cache = build()
+        event.apply(cache)
+        state = cache.copy()
     }
 
     fun build(): GameState
