@@ -98,6 +98,15 @@ class PlayerReceiveFreePark(val player: Int): Event()
     }
 }
 
+class PlayerPayToBank(val player: Int, val amount: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
+        state.players[player].money -= amount
+        state.freePark += amount
+    }
+}
+
 enum class PlayerMovementType
 {
     MOVE,

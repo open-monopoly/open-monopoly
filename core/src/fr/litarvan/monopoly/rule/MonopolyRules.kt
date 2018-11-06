@@ -15,7 +15,7 @@ class MonopolyRules(players: Array<Player>)
     val hasPoll: Boolean
         get() = history.size - pollIndex > 0
     val canEnd: Boolean
-        get() = state.rolled != 0 && !state.didDouble && !state.waitingForBuy
+        get() = state.rolled != 0 && !state.didDouble && !state.waitingForBuy && player.money >= 0
 
     fun roll()
     {
@@ -52,7 +52,7 @@ class MonopolyRules(players: Array<Player>)
 
             // TAXES
             4 -> {
-
+                history += PlayerPayToBank(state.playing, 200)
             }
 
             // JAIL
@@ -71,7 +71,7 @@ class MonopolyRules(players: Array<Player>)
 
             // TAX
             38 -> {
-
+                history += PlayerPayToBank(state.playing, 100)
             }
 
             // LUCK & COMMUNITY
