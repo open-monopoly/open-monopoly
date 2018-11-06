@@ -35,8 +35,8 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
         players.forEach { this += it }
 
         cam.act {
-            position.set(-15f, 10f, -15f)
-            lookAt(7.5f, -2.5f, 7.5f)
+            position.set(15f, 10f, 15f)
+            lookAt(-5f, -2f, -5f)
 
             /*position.set(0f, 20f, 0f)
             lookAt(0f, 0f, 0f)*/
@@ -70,36 +70,36 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
             var z = 0f
 
             if (player.pos < 10) {
-                x = -shift
-                z = -shift
-
-                if (player.pos > 0) {
-                    x += step(player.pos)
-                    z -= Board.caseTop / 2
-                }
-            } else if (player.pos < 20) {
-                x = shift
-                z = -shift
-
-                if (player.pos > 10) {
-                    z += step(player.pos)
-                    x += Board.caseTop / 2
-                }
-            } else if (player.pos < 30) {
                 x = shift
                 z = shift
 
-                if (player.pos > 20) {
+                if (player.pos > 0) {
                     x -= step(player.pos)
                     z += Board.caseTop / 2
                 }
-            } else if (player.pos < 40) {
+            } else if (player.pos < 20) {
                 x = -shift
                 z = shift
 
-                if (player.pos > 30) {
+                if (player.pos > 10) {
                     z -= step(player.pos)
                     x -= Board.caseTop / 2
+                }
+            } else if (player.pos < 30) {
+                x = -shift
+                z = -shift
+
+                if (player.pos > 20) {
+                    x += step(player.pos)
+                    z -= Board.caseTop / 2
+                }
+            } else if (player.pos < 40) {
+                x = shift
+                z = -shift
+
+                if (player.pos > 30) {
+                    z += step(player.pos)
+                    x += Board.caseTop / 2
                 }
             }
 
