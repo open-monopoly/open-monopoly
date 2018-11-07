@@ -35,8 +35,8 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
         players.forEach { this += it }
 
         cam.act {
-            position.set(15f, 10f, 15f)
-            lookAt(-5f, -2f, -5f)
+            position.set(12f, 5f, 12f)
+            lookAt(-5f, -10f, -5f)
 
             /*position.set(0f, 20f, 0f)
             lookAt(0f, 0f, 0f)*/
