@@ -13,16 +13,6 @@ class GameObject: RenderableProvider
 {
     private val model: ModelInstance
 
-    constructor(model: String)
-    {
-        this.model = ModelInstance(Assets.model(model))
-    }
-
-    constructor(model: Model)
-    {
-        this.model = ModelInstance(model)
-    }
-
     var x: Float
         get() = model.transform.`val`[Matrix4.M03]
         set(v) { model.transform.`val`[Matrix4.M03] = v }
@@ -34,6 +24,16 @@ class GameObject: RenderableProvider
     var z: Float
         get() = model.transform.`val`[Matrix4.M23]
         set(v) { model.transform.`val`[Matrix4.M23] = v }
+
+    constructor(model: String)
+    {
+        this.model = ModelInstance(Assets.model(model))
+    }
+
+    constructor(model: Model)
+    {
+        this.model = ModelInstance(model)
+    }
 
     override fun getRenderables(renderables: Array<Renderable>?, pool: Pool<Renderable>?)
     {
