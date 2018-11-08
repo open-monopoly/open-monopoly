@@ -50,7 +50,7 @@ class MonopolyRules(players: Array<Player>)
                 history += PlayerReceiveMoney(state.playing, 400)
             }
 
-            // TAXES
+            // INCOME TAXES
             4 -> {
                 history += PlayerPayToBank(state.playing, 200)
             }
@@ -58,9 +58,9 @@ class MonopolyRules(players: Array<Player>)
             // JAIL
             10 -> {}
 
-            // FREE PARK
+            // FREE PARKING
             20 -> {
-                history += PlayerReceiveFreePark(state.playing)
+                history += PlayerReceiveFreeParking(state.playing)
             }
 
             // GO TO JAIL
@@ -69,7 +69,7 @@ class MonopolyRules(players: Array<Player>)
                 history += PlayerJailed(state.playing)
             }
 
-            // TAX
+            // LUXURY TAXES
             38 -> {
                 history += PlayerPayToBank(state.playing, 100)
             }

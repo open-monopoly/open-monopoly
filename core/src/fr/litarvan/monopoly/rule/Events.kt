@@ -1,18 +1,5 @@
 package fr.litarvan.monopoly.rule
 
-data class GameState(
-        val players: Array<Player>,
-        var playing: Int,
-
-        var turn: Int = 0,
-        var freePark: Int = 0,
-
-        var rolled: Int = 0,
-        var didDouble: Boolean = false,
-
-        var waitingForBuy: Boolean = false
-)
-
 abstract class Event
 {
     abstract fun apply(state: GameState)
@@ -89,12 +76,12 @@ class PlayerReceiveMoney(val player: Int, val amount: Int): Event()
     }
 }
 
-class PlayerReceiveFreePark(val player: Int): Event()
+class PlayerReceiveFreeParking(val player: Int): Event()
 {
     override fun apply(state: GameState)
     {
-        state.players[player].money += state.freePark
-        state.freePark = 0
+        state.players[player].money += state.freeParking
+        state.freeParking = 0
     }
 }
 
@@ -103,7 +90,7 @@ class PlayerPayToBank(val player: Int, val amount: Int): Event()
     override fun apply(state: GameState)
     {
         state.players[player].money -= amount
-        state.freePark += amount
+        state.freeParking += amount
     }
 }
 
