@@ -1,11 +1,11 @@
 [
   {
-    "type": "DEPARTURE",
+    "type": "START",
     "case": 0,
     "name": "Départ"
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 1,
     "case": 1,
     "name": "Boulevard de Belleville",
@@ -20,7 +20,7 @@
     "name": "Caisse de Communauté"
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 1,
     "case": 3,
     "name": "Rue Lecourbe",
@@ -44,7 +44,7 @@
     "values": [25, 50, 100, 200]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 2,
     "case": 6,
     "name": "Rue de Vaugirard",
@@ -59,7 +59,7 @@
     "name": "Chance"
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 2,
     "case": 8,
     "name": "Rue de Courcelles",
@@ -69,7 +69,7 @@
     "values": [6, 30, 90, 270, 400, 550]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 2,
     "case": 9,
     "name": "Avenue de la République",
@@ -84,7 +84,7 @@
     "case": 10
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 3,
     "case": 11,
     "name": "Boulevard de la Vilette",
@@ -102,7 +102,7 @@
     "values": [4, 10]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 3,
     "case": 13,
     "name": "Avenue de Neuilly",
@@ -112,7 +112,7 @@
     "values": [10, 50, 150, 450, 625]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 3,
     "case": 14,
     "name": "Rue de Paradis",
@@ -130,7 +130,7 @@
     "values": [25, 50, 100, 200]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 4,
     "case": 16,
     "name": "Avenue Mozart",
@@ -145,7 +145,7 @@
     "name": "Caisse de Communauté"
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 4,
     "case": 18,
     "name": "Boulevard Saint-Michel",
@@ -155,7 +155,7 @@
     "values": [14, 70, 200, 550, 750, 950]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 4,
     "case": 19,
     "name": "Place Pigalle",
@@ -170,7 +170,7 @@
     "name": "Parc Gratuit"
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 5,
     "case": 21,
     "name": "Avenue Matignon",
@@ -185,7 +185,7 @@
     "name": "Chance"
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 5,
     "case": 23,
     "name": "Boulevard Malesherbes",
@@ -195,7 +195,7 @@
     "values": [18, 90, 250, 700, 875, 1050]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 5,
     "case": 24,
     "name": "Avenue Henri-Martin",
@@ -213,7 +213,7 @@
     "values": [25, 50, 100, 200]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 6,
     "case": 26,
     "name": "Faubourg Saint-Honoré",
@@ -223,7 +223,7 @@
     "values": [22, 110, 330, 800, 975, 1150]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 6,
     "case": 27,
     "name": "Place de la Bourse",
@@ -241,7 +241,7 @@
     "values": [4, 10]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 6,
     "case": 29,
     "name": "Rue la Fayette",
@@ -256,7 +256,7 @@
     "name": "Allez en Prison"
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 7,
     "case": 31,
     "name": "Avenue de Breteuil",
@@ -266,7 +266,7 @@
     "values": [26, 130, 390, 900, 1100, 1275]
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 7,
     "case": 32,
     "name": "Avenue Foch",
@@ -281,7 +281,7 @@
     "name": "Caisse de Communauté"
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 7,
     "case": 34,
     "name": "Boulevard des Capucines",
@@ -304,7 +304,7 @@
     "name": "Chance"
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 8,
     "case": 37,
     "name": "Avenue Champs-Elysées",
@@ -320,7 +320,7 @@
     "price": 100
   },
   {
-    "type": "NORMAL",
+    "type": "PROPERTY",
     "family": 8,
     "case": 39,
     "name": "Rue de la Paix",

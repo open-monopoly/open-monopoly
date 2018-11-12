@@ -24,15 +24,15 @@ class Player(
         var jailed: Boolean = false
 )
 
-class Property(
-        val type: PropertyType,
-        val family: Int,
+class Case(
+        val type: CaseType,
+        val family: Int = -1,
         val case: Int,
         val name: String,
-        val price: Int,
-        val housePrice: Int,
-        val mortgage: Int,
-        val values: Array<Int>,
+        val price: Int = -1,
+        val housePrice: Int = -1,
+        val mortgage: Int = -1,
+        val values: Array<Int> = emptyArray(),
 
         @Json(ignored = true)
         var owner: Int = -1, // = Unowned
@@ -44,8 +44,16 @@ class Property(
         var houses: Int = 0
 )
 
-enum class PropertyType {
-    NORMAL,
+enum class CaseType {
+    PROPERTY,
     RAILROAD,
-    COMPANY
+    COMPANY,
+    CHANCE,
+    COMMUNITY_CHEST,
+    TAX,
+    JAIL,
+    GO_TO_JAIL,
+    FREE_PARK,
+    START,
+    CUSTOM
 }
