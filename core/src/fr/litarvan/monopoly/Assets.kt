@@ -1,8 +1,17 @@
 package fr.litarvan.monopoly
 
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.assets.AssetDescriptor
+import com.badlogic.gdx.assets.AssetLoaderParameters
 import com.badlogic.gdx.assets.AssetManager
+import com.badlogic.gdx.assets.loaders.AssetLoader
+import com.badlogic.gdx.assets.loaders.FileHandleResolver
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver
+import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g3d.Model
+import com.badlogic.gdx.utils.Array
+import fr.litarvan.monopoly.rule.Board
 
 object Assets
 {
@@ -22,6 +31,8 @@ object Assets
 
     fun load()
     {
+        loader.setLoader(Board::class.java, JsonLoader<Board>(InternalFileHandleResolver()))
+
         assets.forEach {
             loader.load(path(it.key), when (it.value.substring(0, it.value.indexOf(':'))) {
                 "texture" -> Texture::class
@@ -39,5 +50,14 @@ object Assets
     fun dispose()
     {
         loader.dispose()
+    }
+}
+
+class JsonLoader<T>(val resolver: FileHandleResolver) : AssetLoader<T, AssetLoaderParameters<T>>(resolver)
+{
+    override fun getDependencies(fileName: String?, file: FileHandle?, parameter: AssetLoaderParameters<T>?): Array<AssetDescriptor<Any>>
+    {
+        AssetDescriptor
+        resolver.resolve(fileName).readString()
     }
 }

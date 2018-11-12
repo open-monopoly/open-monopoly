@@ -1,332 +1,337 @@
-[
-  {
-    "type": "START",
-    "case": 0,
-    "name": "Départ"
-  },
-  {
-    "type": "PROPERTY",
-    "family": 1,
-    "case": 1,
-    "name": "Boulevard de Belleville",
-    "price": 60,
-    "housePrice": 50,
-    "mortgage": 30,
-    "values": [2, 10, 30, 90, 160, 250]
-  },
-  {
-    "type": "COMMUNITY_CHEST",
-    "case": 2,
-    "name": "Caisse de Communauté"
-  },
-  {
-    "type": "PROPERTY",
-    "family": 1,
-    "case": 3,
-    "name": "Rue Lecourbe",
-    "price": 60,
-    "housePrice": 50,
-    "mortage": 30,
-    "values": [4, 20, 60, 180, 320, 500]
-  },
-  {
-    "type": "TAX",
-    "case": 4,
-    "name": "Impôts sur le Revenu",
-    "price": 200
-  },
-  {
-    "type": "RAILROAD",
-    "case": 5,
-    "name": "Gare Montparnasse",
-    "price": 200,
-    "mortage": 100,
-    "values": [25, 50, 100, 200]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 2,
-    "case": 6,
-    "name": "Rue de Vaugirard",
-    "price": 100,
-    "housePrice": 50,
-    "mortage": 50,
-    "values": [6, 30, 90, 270, 400, 550]
-  },
-  {
-    "type": "CHANCE",
-    "case": 7,
-    "name": "Chance"
-  },
-  {
-    "type": "PROPERTY",
-    "family": 2,
-    "case": 8,
-    "name": "Rue de Courcelles",
-    "price": 100,
-    "housePrice": 50,
-    "mortage": 50,
-    "values": [6, 30, 90, 270, 400, 550]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 2,
-    "case": 9,
-    "name": "Avenue de la République",
-    "price": 120,
-    "housePrice": 50,
-    "mortage": 60,
-    "values": [8, 40, 100, 300, 450, 600]
-  },
-  {
-    "type": "JAIL",
-    "name": "Prison",
-    "case": 10
-  },
-  {
-    "type": "PROPERTY",
-    "family": 3,
-    "case": 11,
-    "name": "Boulevard de la Vilette",
-    "price": 140,
-    "housePrice": 100,
-    "mortage": 70,
-    "values": [10, 50, 150, 450, 625]
-  },
-  {
-    "type": "COMPANY",
-    "case": 12,
-    "name": "Compagnie de Distribution d'Électricité",
-    "price": 150,
-    "mortage": 75,
-    "values": [4, 10]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 3,
-    "case": 13,
-    "name": "Avenue de Neuilly",
-    "price": 140,
-    "housePrice": 100,
-    "mortage": 0,
-    "values": [10, 50, 150, 450, 625]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 3,
-    "case": 14,
-    "name": "Rue de Paradis",
-    "price": 160,
-    "housePrice": 100,
-    "mortage": 80,
-    "values": [12, 60, 180, 500, 700, 900]
-  },
-  {
-    "type": "RAILROAD",
-    "case": 15,
-    "name": "Gare de Lyon",
-    "price": 200,
-    "mortage": 100,
-    "values": [25, 50, 100, 200]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 4,
-    "case": 16,
-    "name": "Avenue Mozart",
-    "price": 180,
-    "housePrice": 100,
-    "mortage": 90,
-    "values": [14, 70, 200, 550, 750, 950]
-  },
-  {
-    "type": "COMMUNITY_CHEST",
-    "case": 17,
-    "name": "Caisse de Communauté"
-  },
-  {
-    "type": "PROPERTY",
-    "family": 4,
-    "case": 18,
-    "name": "Boulevard Saint-Michel",
-    "price": 180,
-    "housePrice": 100,
-    "mortage": 90,
-    "values": [14, 70, 200, 550, 750, 950]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 4,
-    "case": 19,
-    "name": "Place Pigalle",
-    "price": 200,
-    "housePrice": 100,
-    "mortage": 100,
-    "values": [16, 80, 220, 600, 800, 1000]
-  },
-  {
-    "type": "FREE_PARK",
-    "case": "20",
-    "name": "Parc Gratuit"
-  },
-  {
-    "type": "PROPERTY",
-    "family": 5,
-    "case": 21,
-    "name": "Avenue Matignon",
-    "price": 220,
-    "housePrice": 150,
-    "mortage": 110,
-    "values": [18, 90, 250, 700, 875, 1050]
-  },
-  {
-    "type": "CHANCE",
-    "case": 22,
-    "name": "Chance"
-  },
-  {
-    "type": "PROPERTY",
-    "family": 5,
-    "case": 23,
-    "name": "Boulevard Malesherbes",
-    "price": 220,
-    "housePrice": 150,
-    "mortage": 110,
-    "values": [18, 90, 250, 700, 875, 1050]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 5,
-    "case": 24,
-    "name": "Avenue Henri-Martin",
-    "price": 240,
-    "housePrice": 150,
-    "mortage": 120,
-    "values": [20, 100, 300, 750, 925, 1100]
-  },
-  {
-    "type": "RAILROAD",
-    "case": 25,
-    "name": "Gare du Nord",
-    "price": 200,
-    "mortage": 100,
-    "values": [25, 50, 100, 200]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 6,
-    "case": 26,
-    "name": "Faubourg Saint-Honoré",
-    "price": 260,
-    "housePrice": 150,
-    "mortage": 130,
-    "values": [22, 110, 330, 800, 975, 1150]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 6,
-    "case": 27,
-    "name": "Place de la Bourse",
-    "price": 260,
-    "housePrice": 150,
-    "mortage": 130,
-    "values": [22, 110, 330, 800, 975, 1150]
-  },
-  {
-    "type": "COMPANY",
-    "case": 28,
-    "name": "Compagnie de Distribution des Eaux",
-    "price": 150,
-    "mortage": 75,
-    "values": [4, 10]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 6,
-    "case": 29,
-    "name": "Rue la Fayette",
-    "price": 280,
-    "housePrice": 150,
-    "mortage": 140,
-    "values": [24, 120, 360, 850, 1025, 1200]
-  },
-  {
-    "type": "GO_TO_JAIL",
-    "case": 30,
-    "name": "Allez en Prison"
-  },
-  {
-    "type": "PROPERTY",
-    "family": 7,
-    "case": 31,
-    "name": "Avenue de Breteuil",
-    "price": 300,
-    "housePrice": 200,
-    "mortage": 150,
-    "values": [26, 130, 390, 900, 1100, 1275]
-  },
-  {
-    "type": "PROPERTY",
-    "family": 7,
-    "case": 32,
-    "name": "Avenue Foch",
-    "price": 300,
-    "housePrice": 200,
-    "mortage": 150,
-    "values": [26, 130, 390, 900, 1100, 1275]
-  },
-  {
-    "type": "COMMUNITY_CHEST",
-    "case": 33,
-    "name": "Caisse de Communauté"
-  },
-  {
-    "type": "PROPERTY",
-    "family": 7,
-    "case": 34,
-    "name": "Boulevard des Capucines",
-    "price": 320,
-    "housePrice": 200,
-    "mortage": 160,
-    "values": [28, 150, 450, 1000, 1200, 1400]
-  },
-  {
-    "type": "RAILROAD",
-    "case": 35,
-    "name": "Gare Saint-Lazare",
-    "price": 200,
-    "mortage": 100,
-    "values": [25, 50, 100, 200]
-  },
-  {
-    "type": "CHANCE",
-    "case": 36,
-    "name": "Chance"
-  },
-  {
-    "type": "PROPERTY",
-    "family": 8,
-    "case": 37,
-    "name": "Avenue Champs-Elysées",
-    "price": 350,
-    "housePrice": 200,
-    "mortage": 175,
-    "values": [35, 175, 500, 1100, 1300, 1500]
-  },
-  {
-    "type": "TAX",
-    "case": 38,
-    "name": "Taxe de Luxe",
-    "price": 100
-  },
-  {
-    "type": "PROPERTY",
-    "family": 8,
-    "case": 39,
-    "name": "Rue de la Paix",
-    "price": 400,
-    "housePrice": 200,
-    "mortage": 200,
-    "values": [50, 200, 600, 1400, 1700, 2000]
-  }
-]
+{
+  "moneyName": "$",
+  "startMoney": 2000,
+  "startBonus": [200, 400],
+  "cases": [
+    {
+      "type": "START",
+      "case": 0,
+      "name": "Départ"
+    },
+    {
+      "type": "PROPERTY",
+      "family": 1,
+      "case": 1,
+      "name": "Boulevard de Belleville",
+      "price": 60,
+      "housePrice": 50,
+      "mortgage": 30,
+      "values": [2, 10, 30, 90, 160, 250]
+    },
+    {
+      "type": "COMMUNITY_CHEST",
+      "case": 2,
+      "name": "Caisse de Communauté"
+    },
+    {
+      "type": "PROPERTY",
+      "family": 1,
+      "case": 3,
+      "name": "Rue Lecourbe",
+      "price": 60,
+      "housePrice": 50,
+      "mortage": 30,
+      "values": [4, 20, 60, 180, 320, 500]
+    },
+    {
+      "type": "TAX",
+      "case": 4,
+      "name": "Impôts sur le Revenu",
+      "price": 200
+    },
+    {
+      "type": "RAILROAD",
+      "case": 5,
+      "name": "Gare Montparnasse",
+      "price": 200,
+      "mortage": 100,
+      "values": [25, 50, 100, 200]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 2,
+      "case": 6,
+      "name": "Rue de Vaugirard",
+      "price": 100,
+      "housePrice": 50,
+      "mortage": 50,
+      "values": [6, 30, 90, 270, 400, 550]
+    },
+    {
+      "type": "CHANCE",
+      "case": 7,
+      "name": "Chance"
+    },
+    {
+      "type": "PROPERTY",
+      "family": 2,
+      "case": 8,
+      "name": "Rue de Courcelles",
+      "price": 100,
+      "housePrice": 50,
+      "mortage": 50,
+      "values": [6, 30, 90, 270, 400, 550]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 2,
+      "case": 9,
+      "name": "Avenue de la République",
+      "price": 120,
+      "housePrice": 50,
+      "mortage": 60,
+      "values": [8, 40, 100, 300, 450, 600]
+    },
+    {
+      "type": "JAIL",
+      "name": "Prison",
+      "case": 10
+    },
+    {
+      "type": "PROPERTY",
+      "family": 3,
+      "case": 11,
+      "name": "Boulevard de la Vilette",
+      "price": 140,
+      "housePrice": 100,
+      "mortage": 70,
+      "values": [10, 50, 150, 450, 625]
+    },
+    {
+      "type": "COMPANY",
+      "case": 12,
+      "name": "Compagnie de Distribution d'Électricité",
+      "price": 150,
+      "mortage": 75,
+      "values": [4, 10]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 3,
+      "case": 13,
+      "name": "Avenue de Neuilly",
+      "price": 140,
+      "housePrice": 100,
+      "mortage": 0,
+      "values": [10, 50, 150, 450, 625]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 3,
+      "case": 14,
+      "name": "Rue de Paradis",
+      "price": 160,
+      "housePrice": 100,
+      "mortage": 80,
+      "values": [12, 60, 180, 500, 700, 900]
+    },
+    {
+      "type": "RAILROAD",
+      "case": 15,
+      "name": "Gare de Lyon",
+      "price": 200,
+      "mortage": 100,
+      "values": [25, 50, 100, 200]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 4,
+      "case": 16,
+      "name": "Avenue Mozart",
+      "price": 180,
+      "housePrice": 100,
+      "mortage": 90,
+      "values": [14, 70, 200, 550, 750, 950]
+    },
+    {
+      "type": "COMMUNITY_CHEST",
+      "case": 17,
+      "name": "Caisse de Communauté"
+    },
+    {
+      "type": "PROPERTY",
+      "family": 4,
+      "case": 18,
+      "name": "Boulevard Saint-Michel",
+      "price": 180,
+      "housePrice": 100,
+      "mortage": 90,
+      "values": [14, 70, 200, 550, 750, 950]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 4,
+      "case": 19,
+      "name": "Place Pigalle",
+      "price": 200,
+      "housePrice": 100,
+      "mortage": 100,
+      "values": [16, 80, 220, 600, 800, 1000]
+    },
+    {
+      "type": "FREE_PARK",
+      "case": "20",
+      "name": "Parc Gratuit"
+    },
+    {
+      "type": "PROPERTY",
+      "family": 5,
+      "case": 21,
+      "name": "Avenue Matignon",
+      "price": 220,
+      "housePrice": 150,
+      "mortage": 110,
+      "values": [18, 90, 250, 700, 875, 1050]
+    },
+    {
+      "type": "CHANCE",
+      "case": 22,
+      "name": "Chance"
+    },
+    {
+      "type": "PROPERTY",
+      "family": 5,
+      "case": 23,
+      "name": "Boulevard Malesherbes",
+      "price": 220,
+      "housePrice": 150,
+      "mortage": 110,
+      "values": [18, 90, 250, 700, 875, 1050]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 5,
+      "case": 24,
+      "name": "Avenue Henri-Martin",
+      "price": 240,
+      "housePrice": 150,
+      "mortage": 120,
+      "values": [20, 100, 300, 750, 925, 1100]
+    },
+    {
+      "type": "RAILROAD",
+      "case": 25,
+      "name": "Gare du Nord",
+      "price": 200,
+      "mortage": 100,
+      "values": [25, 50, 100, 200]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 6,
+      "case": 26,
+      "name": "Faubourg Saint-Honoré",
+      "price": 260,
+      "housePrice": 150,
+      "mortage": 130,
+      "values": [22, 110, 330, 800, 975, 1150]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 6,
+      "case": 27,
+      "name": "Place de la Bourse",
+      "price": 260,
+      "housePrice": 150,
+      "mortage": 130,
+      "values": [22, 110, 330, 800, 975, 1150]
+    },
+    {
+      "type": "COMPANY",
+      "case": 28,
+      "name": "Compagnie de Distribution des Eaux",
+      "price": 150,
+      "mortage": 75,
+      "values": [4, 10]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 6,
+      "case": 29,
+      "name": "Rue la Fayette",
+      "price": 280,
+      "housePrice": 150,
+      "mortage": 140,
+      "values": [24, 120, 360, 850, 1025, 1200]
+    },
+    {
+      "type": "GO_TO_JAIL",
+      "case": 30,
+      "name": "Allez en Prison"
+    },
+    {
+      "type": "PROPERTY",
+      "family": 7,
+      "case": 31,
+      "name": "Avenue de Breteuil",
+      "price": 300,
+      "housePrice": 200,
+      "mortage": 150,
+      "values": [26, 130, 390, 900, 1100, 1275]
+    },
+    {
+      "type": "PROPERTY",
+      "family": 7,
+      "case": 32,
+      "name": "Avenue Foch",
+      "price": 300,
+      "housePrice": 200,
+      "mortage": 150,
+      "values": [26, 130, 390, 900, 1100, 1275]
+    },
+    {
+      "type": "COMMUNITY_CHEST",
+      "case": 33,
+      "name": "Caisse de Communauté"
+    },
+    {
+      "type": "PROPERTY",
+      "family": 7,
+      "case": 34,
+      "name": "Boulevard des Capucines",
+      "price": 320,
+      "housePrice": 200,
+      "mortage": 160,
+      "values": [28, 150, 450, 1000, 1200, 1400]
+    },
+    {
+      "type": "RAILROAD",
+      "case": 35,
+      "name": "Gare Saint-Lazare",
+      "price": 200,
+      "mortage": 100,
+      "values": [25, 50, 100, 200]
+    },
+    {
+      "type": "CHANCE",
+      "case": 36,
+      "name": "Chance"
+    },
+    {
+      "type": "PROPERTY",
+      "family": 8,
+      "case": 37,
+      "name": "Avenue Champs-Elysées",
+      "price": 350,
+      "housePrice": 200,
+      "mortage": 175,
+      "values": [35, 175, 500, 1100, 1300, 1500]
+    },
+    {
+      "type": "TAX",
+      "case": 38,
+      "name": "Taxe de Luxe",
+      "price": 100
+    },
+    {
+      "type": "PROPERTY",
+      "family": 8,
+      "case": 39,
+      "name": "Rue de la Paix",
+      "price": 400,
+      "housePrice": 200,
+      "mortage": 200,
+      "values": [50, 200, 600, 1400, 1700, 2000]
+    }
+  ]
+}

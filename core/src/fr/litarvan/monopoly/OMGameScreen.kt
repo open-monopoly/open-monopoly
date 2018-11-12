@@ -60,10 +60,10 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
             }
         }
 
-        val shift = Board.renderSize / 2f - Board.outerBorder - Board.caseHeight / 2f
+        val shift = BoardInfos.renderSize / 2f - BoardInfos.outerBorder - BoardInfos.caseHeight / 2f
         val pShift = 0.4f
 
-        val step = { pos: Int -> Board.caseHeight / 2f + (Board.innerBorder + Board.caseWidth) * (pos % 10) - Board.caseWidth / 2f }
+        val step = { pos: Int -> BoardInfos.caseHeight / 2f + (BoardInfos.innerBorder + BoardInfos.caseWidth) * (pos % 10) - BoardInfos.caseWidth / 2f }
 
         rules.state.players.forEachIndexed { i, player ->
             var x = 0f
@@ -75,7 +75,7 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 
                 if (player.pos > 0) {
                     x -= step(player.pos)
-                    z += Board.caseTop / 2
+                    z += BoardInfos.caseTop / 2
                 }
             } else if (player.pos < 20) {
                 x = -shift
@@ -83,7 +83,7 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 
                 if (player.pos > 10) {
                     z -= step(player.pos)
-                    x -= Board.caseTop / 2
+                    x -= BoardInfos.caseTop / 2
                 }
             } else if (player.pos < 30) {
                 x = -shift
@@ -91,7 +91,7 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 
                 if (player.pos > 20) {
                     x += step(player.pos)
-                    z -= Board.caseTop / 2
+                    z -= BoardInfos.caseTop / 2
                 }
             } else if (player.pos < 40) {
                 x = shift
@@ -99,7 +99,7 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 
                 if (player.pos > 30) {
                     z += step(player.pos)
-                    x += Board.caseTop / 2
+                    x += BoardInfos.caseTop / 2
                 }
             }
 

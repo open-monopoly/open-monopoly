@@ -1,6 +1,6 @@
 package fr.litarvan.monopoly
 
-object Board
+object BoardInfos
 {
     const val textureSize = 4096f
     const val renderSize = 20f

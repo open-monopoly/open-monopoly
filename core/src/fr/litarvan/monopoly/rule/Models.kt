@@ -16,7 +16,7 @@ data class GameState(
         var waitingForBuy: Boolean = false
 )
 
-class Player(
+data class Player(
         val name: String,
         val color: Color,
         var money: Int = 2000,
@@ -24,7 +24,14 @@ class Player(
         var jailed: Boolean = false
 )
 
-class Case(
+data class Board(
+        val moneyName: String,
+        val startMoney: Int,
+        val startBonus: Int,
+        val cases: Array<Case>
+)
+
+data class Case(
         val type: CaseType,
         val family: Int = -1,
         val case: Int,
