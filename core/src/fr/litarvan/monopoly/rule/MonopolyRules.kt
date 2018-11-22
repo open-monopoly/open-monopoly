@@ -1,6 +1,8 @@
 package fr.litarvan.monopoly.rule
 
 import java.util.*
+import fr.litarvan.monopoly.Assets.board
+import fr.litarvan.monopoly.rule.CaseType.*
 
 class MonopolyRules(players: Array<Player>)
 {
@@ -43,69 +45,71 @@ class MonopolyRules(players: Array<Player>)
         }
 
         val pos = state.players[state.playing].pos
+        val case = board.cases[pos]
 
-        when(pos) {
-            // START
-            0 -> {
-                history += PlayerReceiveMoney(state.playing, 400)
+        when (case.type) {
+            PROPERTY, RAILROAD, COMPANY -> {
+                if (case.owner == -1) {
+                    if (case.price <= player.money) {
+                        history += PlayerCanBuy(state.playing, case.case)
+                    }
+                } else {
+                    val value: Int = when (case.type) {
+                        PROPERTY -> {
+                            case.values[case.houses]
+                            // HANDLE FAMILY DOUBLE
+                        }
+                        RAILROAD -> case.values[board.cases.filter { it.type == RAILROAD && it.owner == case.owner }.size - 1]
+                        COMPANY -> case.values[
+                            if (board.cases.find { it.type == COMPANY && it.owner == case.owner } == null) 0 else 1
+                        ] * (first + second)
+                        else -> 0 // Can't happen
+                    }
+
+                    history += PlayerPayToPlayer(state.playing, case.owner, value)
+                }
             }
+            CHANCE -> {
 
-            // INCOME TAXES
-            4 -> {
-                history += PlayerPayToBank(state.playing, 200)
             }
+            COMMUNITY_CHEST -> {
 
-            // JAIL
-            10 -> {}
-
-            // FREE PARKING
-            20 -> {
-                history += PlayerReceiveFreeParking(state.playing)
             }
-
-            // GO TO JAIL
-            30 -> {
+            TAX -> {
+                history += PlayerPayToFreeParking(state.playing, case.price)
+            }
+            JAIL -> {
+                // ... Visit
+            }
+            GO_TO_JAIL -> {
                 move(PlayerMovementType.STRAIGHT, 10)
                 history += PlayerJailed(state.playing)
             }
-
-            // LUXURY TAXES
-            38 -> {
-                history += PlayerPayToBank(state.playing, 100)
+            FREE_PARKING -> {
+                history += PlayerReceiveFreeParking(state.playing)
             }
-
-            // LUCK & COMMUNITY
-            7, 22, 36 -> {
-
+            START -> {
+                history += PlayerReceiveMoney(state.playing, board.startBonus[1])
             }
-
-            2, 17, 33 -> {
-
-            }
-
-            else -> {
-                // PROPERTY
+            CUSTOM -> {
+                // TODO: Mod engine
             }
         }
     }
 
-    private fun move(type: PlayerMovementType, ofOrTo: Int)
+    fun buy()
     {
-        history += PlayerMovement(state.playing, type, ofOrTo)
-
-        if (type == PlayerMovementType.MOVE) {
-            val pos = state.players[state.playing].pos
-
-            if (pos != 0 && ofOrTo > pos) {
-                history += PlayerReceiveMoney(state.playing, 200)
-            }
+        if (!state.waitingForBuy) {
+            return
         }
+
+        history += PlayerPayToBank(state.playing, board.cases.find { it.case == player.pos }!!.price)
+        history += PlayerBuyCase(state.playing, player.pos)
     }
 
     fun endTurn()
     {
-        if (!canEnd)
-        {
+        if (!canEnd) {
             return
         }
 
@@ -120,5 +124,26 @@ class MonopolyRules(players: Array<Player>)
         pollIndex = history.size
 
         return array.requireNoNulls()
+    }
+
+    private fun move(type: PlayerMovementType, ofOrTo: Int)
+    {
+        val oldPos = player.pos
+        val startCase = board.cases.find { it.type == START }!!.case // TODO: Handle error
+
+        history += PlayerMovement(state.playing, type, ofOrTo)
+
+        if (type == PlayerMovementType.MOVE) {
+            val pos = player.pos
+            val throughStart = when {
+                pos > oldPos -> startCase in (oldPos + 1)..(pos - 1)
+                else -> startCase > oldPos || startCase < pos
+            } // TODO: Should work, but further checking is needed
+
+            if (throughStart) {
+                println("Through start: pos: $pos, old pos: $oldPos, startCase: $startCase" )
+                history += PlayerReceiveMoney(state.playing, board.startBonus[0])
+            }
+        }
     }
 }

@@ -15,11 +15,19 @@ import fr.litarvan.monopoly.rule.*
 class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 {
     private val board = GameObject("board")
-    private val rules = MonopolyRules(arrayOf(Player("Litarvan", Color.BLUE), Player("Zbeub", Color.ORANGE)))
+    private val rules: MonopolyRules
     private val players = mutableListOf<GameObject>()
 
     init
     {
+        val startCase = Assets.board.cases.find { it.type == CaseType.START }!!.case
+        val startMoney = Assets.board.startMoney
+
+        rules = MonopolyRules(arrayOf(
+                Player("Litarvan", Color.BLUE, startMoney, startCase),
+                Player("Zbeub", Color.ORANGE, startMoney, startCase)
+        ))
+
         this += board
 
         val builder = ModelBuilder()
@@ -56,6 +64,7 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
                 is PlayerReceiveMoney -> println("Player {${it.player}) receives ${it.amount}$")
                 is PlayerJailed       -> println("Player {${it.player}} is JAILED !")
                 is PlayerUnjailed     -> println("Player {${it.player}} is FREED from jail !")
+                is PlayerPayToFreeParking -> println("Player {${it.player}} pays ${it.amount} to free parking")
                 else                  -> println("Event : $it")
             }
         }
@@ -134,6 +143,10 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
             rules.roll()
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
+            rules.buy()
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.E)) {

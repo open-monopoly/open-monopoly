@@ -19,15 +19,15 @@ data class GameState(
 data class Player(
         val name: String,
         val color: Color,
-        var money: Int = 2000,
-        var pos: Int = 0,
+        var money: Int,
+        var pos: Int,
         var jailed: Boolean = false
 )
 
 data class Board(
         val moneyName: String,
         val startMoney: Int,
-        val startBonus: Int,
+        val startBonus: IntArray,
         val cases: Array<Case>
 )
 
@@ -39,7 +39,7 @@ data class Case(
         val price: Int = -1,
         val housePrice: Int = -1,
         val mortgage: Int = -1,
-        val values: Array<Int> = emptyArray(),
+        val values: IntArray = IntArray(0),
 
         @Json(ignored = true)
         var owner: Int = -1, // = Unowned
@@ -60,7 +60,7 @@ enum class CaseType {
     TAX,
     JAIL,
     GO_TO_JAIL,
-    FREE_PARK,
+    FREE_PARKING,
     START,
     CUSTOM
 }

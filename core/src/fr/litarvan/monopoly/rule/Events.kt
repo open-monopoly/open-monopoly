@@ -1,5 +1,7 @@
 package fr.litarvan.monopoly.rule
 
+import fr.litarvan.monopoly.Assets
+
 abstract class Event
 {
     abstract fun apply(state: GameState)
@@ -90,7 +92,43 @@ class PlayerPayToBank(val player: Int, val amount: Int): Event()
     override fun apply(state: GameState)
     {
         state.players[player].money -= amount
+    }
+}
+
+class PlayerPayToFreeParking(val player: Int, val amount: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
+        state.players[player].money -= amount
         state.freeParking += amount
+    }
+}
+
+class PlayerPayToPlayer(val player: Int, val to: Int, val amount: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
+        state.players[player].money -= amount
+        state.players[to].money += amount
+    }
+}
+
+class PlayerCanBuy(val player: Int, val case: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
+        state.waitingForBuy = true
+    }
+}
+
+class PlayerBuyCase(val player: Int, val case: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
+        val c = Assets.board.cases.find { it.case == case }!!
+        c.owner = player
+
+        state.waitingForBuy = false
     }
 }
 

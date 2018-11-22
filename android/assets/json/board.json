@@ -169,8 +169,8 @@
       "values": [16, 80, 220, 600, 800, 1000]
     },
     {
-      "type": "FREE_PARK",
-      "case": "20",
+      "type": "FREE_PARKING",
+      "case": 20,
       "name": "Parc Gratuit"
     },
     {
