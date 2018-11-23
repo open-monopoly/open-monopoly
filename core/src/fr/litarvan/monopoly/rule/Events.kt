@@ -80,8 +80,13 @@ class PlayerReceiveMoney(val player: Int, val amount: Int): Event()
 
 class PlayerReceiveFreeParking(val player: Int): Event()
 {
+    var amount = 0
+        private set
+
     override fun apply(state: GameState)
     {
+        amount = state.freeParking
+
         state.players[player].money += state.freeParking
         state.freeParking = 0
     }
@@ -128,6 +133,14 @@ class PlayerBuyCase(val player: Int, val case: Int): Event()
         val c = Assets.board.cases.find { it.case == case }!!
         c.owner = player
 
+        state.waitingForBuy = false
+    }
+}
+
+class PlayerDontBuy(val player: Int, val case: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
         state.waitingForBuy = false
     }
 }

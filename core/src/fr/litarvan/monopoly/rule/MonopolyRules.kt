@@ -40,12 +40,17 @@ class MonopolyRules(players: Array<Player>)
             history += PlayerUnjailed(state.playing)
         } else if (first == second && state.rolled == 3) {
             history += PlayerJailed(state.playing)
-        } else {
-            move(PlayerMovementType.MOVE, first + second)
+            return
         }
+
+        move(PlayerMovementType.MOVE, first + second)
 
         val pos = state.players[state.playing].pos
         val case = board.cases[pos]
+
+        if (state.playing == case.owner) {
+            return
+        }
 
         when (case.type) {
             PROPERTY, RAILROAD, COMPANY -> {
@@ -56,8 +61,14 @@ class MonopolyRules(players: Array<Player>)
                 } else {
                     val value: Int = when (case.type) {
                         PROPERTY -> {
-                            case.values[case.houses]
-                            // HANDLE FAMILY DOUBLE
+                            var v = case.values[case.houses]
+                            val completeFamily = board.cases.filter { it.family == case.family }.find { it.owner != case.owner } == null
+
+                            if (completeFamily) {
+                                v *= 2
+                            }
+
+                            v
                         }
                         RAILROAD -> case.values[board.cases.filter { it.type == RAILROAD && it.owner == case.owner }.size - 1]
                         COMPANY -> case.values[
@@ -70,7 +81,7 @@ class MonopolyRules(players: Array<Player>)
                 }
             }
             CHANCE -> {
-
+                // TODO: Chance & community chests
             }
             COMMUNITY_CHEST -> {
 
@@ -92,7 +103,7 @@ class MonopolyRules(players: Array<Player>)
                 history += PlayerReceiveMoney(state.playing, board.startBonus[1])
             }
             CUSTOM -> {
-                // TODO: Mod engine
+                // TODO: Mod engine ?
             }
         }
     }
@@ -103,8 +114,38 @@ class MonopolyRules(players: Array<Player>)
             return
         }
 
-        history += PlayerPayToBank(state.playing, board.cases.find { it.case == player.pos }!!.price)
+        val case = board.cases.find { it.case == player.pos }!!
+
+        if (case.owner != -1) {
+            return
+        }
+
+        history += PlayerPayToBank(state.playing, case.price)
         history += PlayerBuyCase(state.playing, player.pos)
+    }
+
+    fun dontBuy()
+    {
+        if (!state.waitingForBuy) {
+            return
+        }
+
+        history += PlayerDontBuy(state.playing, player.pos)
+    }
+
+    fun buyHouses(case: Int, amount: Int)
+    {
+        // TODO: "House line" mechanic !
+    }
+
+    fun payCaution()
+    {
+        if (!player.jailed) {
+            return
+        }
+
+        history += PlayerPayToFreeParking(state.playing, board.jailCaution) // TODO: Move caution to json
+        history += PlayerUnjailed(state.playing)
     }
 
     fun endTurn()

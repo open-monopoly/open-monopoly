@@ -28,6 +28,7 @@ data class Board(
         val moneyName: String,
         val startMoney: Int,
         val startBonus: IntArray,
+        val jailCaution: Int,
         val cases: Array<Case>
 )
 

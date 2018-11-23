@@ -2,6 +2,7 @@
   "moneyName": "$",
   "startMoney": 2000,
   "startBonus": [200, 400],
+  "jailCaution": 50,
   "cases": [
     {
       "type": "START",
@@ -112,7 +113,7 @@
       "name": "Avenue de Neuilly",
       "price": 140,
       "housePrice": 100,
-      "mortage": 0,
+      "mortage": 70,
       "values": [10, 50, 150, 450, 625]
     },
     {
