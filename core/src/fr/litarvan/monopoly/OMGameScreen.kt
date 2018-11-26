@@ -71,6 +71,8 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
                 is PlayerPayToBank -> println("Player {${it.player}} pays ${it.amount}$ to bank")
                 is PlayerPayToPlayer -> println("Player {${it.player}} pays ${it.amount}$ to player {${it.to}}")
                 is PlayerDontBuy -> println("Player {${it.player}) is not buying case ${it.case} (${Assets.board.cases[it.case].name})")
+                is PlayerPickChanceCard -> println("Player {${it.player}) picked Chance card : '${it.card}'")
+                is PlayerPickCommunityChestCard -> println("Player {${it.player}) picked Community Chest card : '${it.card}'")
                 else                  -> println("Event : $it")
             }
         }

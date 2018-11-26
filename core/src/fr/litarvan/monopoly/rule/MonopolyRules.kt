@@ -106,6 +106,9 @@ class MonopolyRules(players: Array<Player>)
                     MOVE_STRAIGHT -> {
                         move(PlayerMovementType.STRAIGHT, card.params[0])
                     }
+                    MOVE_START -> {
+                        // TODO: Move to start
+                    }
                     MOVE_OF -> {
                         move(PlayerMovementType.STRAIGHT, player.pos + card.params[0])
                     }
@@ -120,6 +123,9 @@ class MonopolyRules(players: Array<Player>)
                     }
                     PAY_OR_CHANCE -> {
                         // TODO: Pay or chance
+                    }
+                    BIRTHDAY -> {
+                        state.players.forEachIndexed { i, _ -> if (i != state.playing) history += PlayerPayToPlayer(i, state.playing, card.params[0]) }
                     }
                 }
             }

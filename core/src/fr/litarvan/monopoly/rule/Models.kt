@@ -78,7 +78,7 @@ enum class CaseType {
 data class Card(
         val text: String,
         val type: CardType,
-        val params: IntArray
+        val params: IntArray = IntArray(0)
 )
 
 enum class CardType {
@@ -87,8 +87,10 @@ enum class CardType {
     MOVE,
     MOVE_STRAIGHT,
     MOVE_OF,
+    MOVE_START,
     REPAIR,
     JAIL,
     FREE_JAIL,
-    PAY_OR_CHANCE
+    PAY_OR_CHANCE,
+    BIRTHDAY
 }
