@@ -145,6 +145,30 @@ class PlayerDontBuy(val player: Int, val case: Int): Event()
     }
 }
 
+class PlayerPickChanceCard(val player: Int, val card: String): Event()
+{
+    override fun apply(state: GameState)
+    {
+        state.chanceCard++
+
+        if (state.chanceCard >= Assets.board.chance.size) {
+            state.chanceCard = 0
+        }
+    }
+}
+
+class PlayerPickCommunityChestCard(val player: Int, val card: String): Event()
+{
+    override fun apply(state: GameState)
+    {
+        state.communityChestCard++
+
+        if (state.communityChestCard >= Assets.board.communityChest.size) {
+            state.communityChestCard = 0
+        }
+    }
+}
+
 enum class PlayerMovementType
 {
     MOVE,

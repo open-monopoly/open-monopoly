@@ -2,6 +2,10 @@ package fr.litarvan.monopoly.rule
 
 import com.badlogic.gdx.graphics.Color
 import com.beust.klaxon.Json
+import fr.litarvan.monopoly.Assets
+import java.util.*
+
+private val rand = Random()
 
 data class GameState(
         val players: Array<Player>,
@@ -13,7 +17,10 @@ data class GameState(
         var rolled: Int = 0,
         var didDouble: Boolean = false,
 
-        var waitingForBuy: Boolean = false
+        var waitingForBuy: Boolean = false,
+
+        var chanceCard: Int = rand.nextInt(Assets.board.chance.size),
+        var communityChestCard: Int = rand.nextInt(Assets.board.communityChest.size)
 )
 
 data class Player(
@@ -29,7 +36,9 @@ data class Board(
         val startMoney: Int,
         val startBonus: IntArray,
         val jailCaution: Int,
-        val cases: Array<Case>
+        val cases: Array<Case>,
+        val chance: Array<Card>,
+        val communityChest: Array<Card>
 )
 
 data class Case(
@@ -64,4 +73,22 @@ enum class CaseType {
     FREE_PARKING,
     START,
     CUSTOM
+}
+
+data class Card(
+        val text: String,
+        val type: CardType,
+        val params: IntArray
+)
+
+enum class CardType {
+    PAY,
+    RECEIVE,
+    MOVE,
+    MOVE_STRAIGHT,
+    MOVE_OF,
+    REPAIR,
+    JAIL,
+    FREE_JAIL,
+    PAY_OR_CHANCE
 }

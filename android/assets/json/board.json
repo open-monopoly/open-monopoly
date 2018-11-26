@@ -334,5 +334,163 @@
       "mortage": 200,
       "values": [50, 200, 600, 1400, 1700, 2000]
     }
+  ],
+  "chance": [
+    {
+      "text": "Allez en prison.\n\nAvancez tout droit en prison, Ne passez pas par la case départ\n",
+      "type": "JAIL"
+    },
+    {
+      "text": "Vous êtes imposé pour les réparations voirie à raison de :\n40$ par maison\n115$ par hôtel",
+      "type": "REPAIR",
+      "params": [40, 115]
+    },
+    {
+      "text": "Vous êtes libéré de prison.\n\nCette carte peut être conservée jusqu'à qu'elle soit utilisée ou vendue",
+      "type": "FREE_JAIL"
+    },
+    {
+      "text": "Amende pour ivresse :\n20$",
+      "type": "PAY",
+      "params": [20]
+    },
+    {
+      "text": "Votre immeuble et votre prêt rapportent, vous devez toucher 150$",
+      "type": "RECEIVE",
+      "params": [150]
+    },
+    {
+      "text": "Payez pour frais de scolarité :\n150$",
+      "type": "PAY",
+      "params": [150]
+    },
+    {
+      "text": "Faites des réparations dans toutes vos maisons :\n25$ par maison\n100$ par hôtel",
+      "type": "REPAIR",
+      "params": [25, 100]
+    },
+    {
+      "text": "Rendez-vous à Rue de la Paix",
+      "type": "MOVE",
+      "params": [39]
+    },
+    {
+      "text": "Rendez-vous à l'Avenue Henri-Martin",
+      "type": "MOVE",
+      "params": [24]
+    },
+    {
+      "text": "Reculez de trois cases",
+      "type": "MOVE_OF",
+      "params": [-3]
+    },
+    {
+      "text": "Vous gagnez le prix de mots croisés\nRecevez 100$",
+      "type": "RECEIVE",
+      "params": [100]
+    },
+    {
+      "text": "Amende pour excès de vitesse :\n15$",
+      "type": "PAY",
+      "params": [15]
+    },
+    {
+      "text": "Avancez jusqu'à la case départ",
+      "type": "MOVE_START"
+    },
+    {
+      "text": "Avancez jusqu'au Boulevard de la Villette",
+      "type": "MOVE",
+      "params": [11]
+    },
+    {
+      "text": "Allez à la Gare de Lyon",
+      "type": "MOVE",
+      "params": [15]
+    },
+    {
+      "text": "La banque vous verse un dividende de 50$",
+      "type": "RECEIVE",
+      "params": [50]
+    }
+  ],
+  "communityChest": [
+    {
+      "text": "Vous avez gagné le deuxième prix de beauté\nRecevez 10$",
+      "type": "RECEIVE",
+      "params": [10]
+    },
+    {
+      "text": "Avancez jusqu'à la case dpart",
+      "type": "MOVE_START"
+    },
+    {
+      "text": "Retournez à Belleville",
+      "type": "MOVE_STRAIGHT",
+      "params": [1]
+    },
+    {
+      "text": "Recevez votre intérêt sur l'emprunt à 7%\n25$",
+      "type": "RECEIVE",
+      "params": [25]
+    },
+    {
+      "text": "Recevez votre revenu annuel\n100$",
+      "type": "RECEIVE",
+      "params": [100]
+    },
+    {
+      "text": "Allez en prison.\n\nAvancez tout droit en prison, nNe passez pas par la case départ.",
+      "type": "JAIL"
+    },
+    {
+      "text": "Payez la note du médecin\n50$",
+      "type": "PAY",
+      "params": [50]
+    },
+    {
+      "text": "Vous héritez 100$",
+      "type": "RECEIVE",
+      "params": [100]
+    },
+    {
+      "text": "Payez à l'hôpital\n100$",
+      "type": "PAY",
+      "params": [100]
+    },
+    {
+      "text": "C'est votre anniversaire : chaque joueur doit vous donner 10$",
+      "type": "BIRTHDAY",
+      "params": [10]
+    },
+    {
+      "text": "Les contributions vous remboursent la somme de 20$",
+      "type": "RECEIVE",
+      "params": [20]
+    },
+    {
+      "text": "Vous êtes libéré de prison.\n\nCette carte peut être conservée jusqu'à qu'elle soit utilisée ou vendue",
+      "type": "FREE_JAIL"
+    },
+    {
+      "text": "Payez une amende de 10$ ou tirez une carte chance",
+      "type": "PAY_OR_CHANCE",
+      "params": [10]
+    },
+    {
+      "text": "Payez votre police d'assurance s'élevant à 50$",
+      "type": "PAY",
+      "params": [50]
+    },
+    {
+      "text": "Erreur de la banque en votre faveur\nRecevez 200$",
+      "type": "RECEIVE",
+      "params": [200]
+    },
+    {
+      "text": "La vente de stock vous rapporte 50$",
+      "type": "RECEIVE",
+      "params": [50]
+    }
   ]
 }

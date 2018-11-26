@@ -2,7 +2,9 @@ package fr.litarvan.monopoly.rule
 
 import java.util.*
 import fr.litarvan.monopoly.Assets.board
+import fr.litarvan.monopoly.rule.CardType.*
 import fr.litarvan.monopoly.rule.CaseType.*
+import fr.litarvan.monopoly.rule.CaseType.JAIL
 
 class MonopolyRules(players: Array<Player>)
 {
@@ -80,11 +82,46 @@ class MonopolyRules(players: Array<Player>)
                     history += PlayerPayToPlayer(state.playing, case.owner, value)
                 }
             }
-            CHANCE -> {
-                // TODO: Chance & community chests
-            }
-            COMMUNITY_CHEST -> {
+            CHANCE, COMMUNITY_CHEST -> {
+                val cards = if (case.type == CHANCE) board.chance else board.communityChest
+                val card = cards[if (case.type == CHANCE) state.chanceCard else state.communityChestCard]
 
+                history += if (case.type == CHANCE)
+                    PlayerPickChanceCard(state.playing, card.text)
+                else
+                    PlayerPickCommunityChestCard(state.playing, card.text)
+
+                // TODO: Create event
+
+                when (card.type) {
+                    PAY -> {
+                        history += PlayerPayToFreeParking(state.playing, card.params[0])
+                    }
+                    RECEIVE -> {
+                        history += PlayerReceiveMoney(state.playing, card.params[0])
+                    }
+                    MOVE -> {
+                        move(PlayerMovementType.MOVE, card.params[0])
+                    }
+                    MOVE_STRAIGHT -> {
+                        move(PlayerMovementType.STRAIGHT, card.params[0])
+                    }
+                    MOVE_OF -> {
+                        move(PlayerMovementType.STRAIGHT, player.pos + card.params[0])
+                    }
+                    REPAIR -> {
+                        history += PlayerPayToFreeParking(state.playing, 0 /* TODO: REPAIR */)
+                    }
+                    JAIL -> {
+                        history += PlayerJailed(state.playing)
+                    }
+                    FREE_JAIL -> {
+                        // TODO: Free jail
+                    }
+                    PAY_OR_CHANCE -> {
+                        // TODO: Pay or chance
+                    }
+                }
             }
             TAX -> {
                 history += PlayerPayToFreeParking(state.playing, case.price)
