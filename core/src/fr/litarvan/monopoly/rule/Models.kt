@@ -11,6 +11,8 @@ data class GameState(
         val players: Array<Player>,
         var playing: Int,
 
+        val board: Board = Assets.board.copy(),
+
         var turn: Int = 0,
         var freeParking: Int = 0,
 
@@ -19,8 +21,8 @@ data class GameState(
 
         var waitingForBuy: Boolean = false,
 
-        var chanceCard: Int = rand.nextInt(Assets.board.chance.size),
-        var communityChestCard: Int = rand.nextInt(Assets.board.communityChest.size)
+        var chanceCard: Int = rand.nextInt(board.chance.size),
+        var communityChestCard: Int = rand.nextInt(board.communityChest.size)
 )
 
 data class Player(

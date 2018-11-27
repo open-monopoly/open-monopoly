@@ -1,7 +1,5 @@
 package fr.litarvan.monopoly.rule
 
-import fr.litarvan.monopoly.Assets
-
 abstract class Event
 {
     abstract fun apply(state: GameState)
@@ -130,7 +128,7 @@ class PlayerBuyCase(val player: Int, val case: Int): Event()
 {
     override fun apply(state: GameState)
     {
-        val c = Assets.board.cases.find { it.case == case }!!
+        val c = state.board.cases.find { it.case == case }!!
         c.owner = player
 
         state.waitingForBuy = false
@@ -151,7 +149,7 @@ class PlayerPickChanceCard(val player: Int, val card: String): Event()
     {
         state.chanceCard++
 
-        if (state.chanceCard >= Assets.board.chance.size) {
+        if (state.chanceCard >= state.board.chance.size) {
             state.chanceCard = 0
         }
     }
@@ -163,7 +161,7 @@ class PlayerPickCommunityChestCard(val player: Int, val card: String): Event()
     {
         state.communityChestCard++
 
-        if (state.communityChestCard >= Assets.board.communityChest.size) {
+        if (state.communityChestCard >= state.board.communityChest.size) {
             state.communityChestCard = 0
         }
     }
@@ -189,7 +187,23 @@ class PlayerBuildHouses(val case: Int, val amount: Int): Event()
 {
     override fun apply(state: GameState)
     {
-        Assets.board.cases[case].houses += amount
+        state.board.cases[case].houses += amount
+    }
+}
+
+class PlayerMortgageCase(val player: Int, val case: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
+        state.board.cases[case].mortgaged = true
+    }
+}
+
+class PlayerUnmortgageCase(val player: Int, val case: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
+        state.board.cases[case].mortgaged = false
     }
 }
 

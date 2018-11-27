@@ -20,8 +20,8 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 
     init
     {
-        val startCase = Assets.board.cases.find { it.type == CaseType.START }!!.case
-        val startMoney = Assets.board.startMoney
+        val startCase = rules.board.cases.find { it.type == CaseType.START }!!.case
+        val startMoney = rules.board.startMoney
 
         rules = MonopolyRules(arrayOf(
                 Player("Litarvan", Color.BLUE, startMoney, startCase),
@@ -65,12 +65,12 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
                 is PlayerJailed       -> println("Player {${it.player}} is JAILED !")
                 is PlayerUnjailed     -> println("Player {${it.player}} is FREED from jail !")
                 is PlayerPayToFreeParking -> println("Player {${it.player}} pays ${it.amount}$ to free parking")
-                is PlayerBuyCase -> println("Player {${it.player}) bought case ${it.case} (${Assets.board.cases[it.case].name})")
+                is PlayerBuyCase -> println("Player {${it.player}) bought case ${it.case} (${rules.board.cases[it.case].name})")
                 is PlayerReceiveFreeParking -> println("Player {${it.player}} receives ${it.amount}$ from free parking")
-                is PlayerCanBuy -> println("Player {${it.player}} is being asked to buy case ${it.case} (${Assets.board.cases[it.case].name})")
+                is PlayerCanBuy -> println("Player {${it.player}} is being asked to buy case ${it.case} (${rules.board.cases[it.case].name})")
                 is PlayerPayToBank -> println("Player {${it.player}} pays ${it.amount}$ to bank")
                 is PlayerPayToPlayer -> println("Player {${it.player}} pays ${it.amount}$ to player {${it.to}}")
-                is PlayerDontBuy -> println("Player {${it.player}) is not buying case ${it.case} (${Assets.board.cases[it.case].name})")
+                is PlayerDontBuy -> println("Player {${it.player}) is not buying case ${it.case} (${rules.board.cases[it.case].name})")
                 is PlayerPickChanceCard -> println("Player {${it.player}) picked Chance card : '${it.card}'")
                 is PlayerPickCommunityChestCard -> println("Player {${it.player}) picked Community Chest card : '${it.card}'")
                 else                  -> println("Event : $it")

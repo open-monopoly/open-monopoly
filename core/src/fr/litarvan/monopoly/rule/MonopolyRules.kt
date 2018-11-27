@@ -1,10 +1,8 @@
 package fr.litarvan.monopoly.rule
 
 import java.util.*
-import fr.litarvan.monopoly.Assets.board
 import fr.litarvan.monopoly.rule.CardType.*
 import fr.litarvan.monopoly.rule.CaseType.*
-import fr.litarvan.monopoly.rule.CaseType.JAIL
 
 class MonopolyRules(players: Array<Player>)
 {
@@ -14,6 +12,8 @@ class MonopolyRules(players: Array<Player>)
 
     val state: GameState
         get() = history.state
+    val board: Board
+        get() = state.board
     val player: Player
         get() = state.players[state.playing]
     val hasPoll: Boolean
@@ -61,7 +61,7 @@ class MonopolyRules(players: Array<Player>)
                     if (case.price <= player.money) {
                         history += PlayerCanBuy(state.playing, case.case)
                     }
-                } else {
+                } else if (!case.mortgaged) {
                     val value: Int = when (case.type) {
                         PROPERTY -> {
                             var v = case.values[case.houses]
@@ -114,7 +114,7 @@ class MonopolyRules(players: Array<Player>)
                     REPAIR -> {
                         history += PlayerPayToFreeParking(state.playing, 0 /* TODO: REPAIR */)
                     }
-                    JAIL -> {
+                    CardType.JAIL -> {
                         history += PlayerJailed(state.playing)
                     }
                     FREE_JAIL -> {
@@ -128,7 +128,7 @@ class MonopolyRules(players: Array<Player>)
             TAX -> {
                 history += PlayerPayToFreeParking(state.playing, case.price)
             }
-            JAIL -> {
+            CaseType.JAIL -> {
                 // ... Visit
             }
             GO_TO_JAIL -> {
@@ -202,6 +202,30 @@ class MonopolyRules(players: Array<Player>)
 
         history += PlayerUseFreeJail(state.playing)
         history += PlayerUnjailed(state.playing)
+    }
+
+    fun mortgage(case: Int)
+    {
+        val case = board.cases[case]
+
+        if (case.mortgaged) {
+            return
+        }
+
+        history += PlayerMortgageCase(state.playing, case.case)
+        history += PlayerReceiveMoney(state.playing, case.mortgage)
+    }
+
+    fun unmortgage(case: Int)
+    {
+        val case = board.cases[case]
+
+        if (!case.mortgaged) {
+            return
+        }
+
+        history += PlayerUnmortgageCase(state.playing, case.case)
+        history += PlayerPayToBank(state.playing, case.mortgage)
     }
 
     fun endTurn()
