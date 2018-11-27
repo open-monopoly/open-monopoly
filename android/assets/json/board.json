@@ -473,11 +473,6 @@
       "type": "FREE_JAIL"
     },
     {
-      "text": "Payez une amende de 10$ ou tirez une carte chance",
-      "type": "PAY_OR_CHANCE",
-      "params": [10]
-    },
-    {
       "text": "Payez votre police d'assurance s'élevant à 50$",
       "type": "PAY",
       "params": [50]

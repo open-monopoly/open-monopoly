@@ -28,7 +28,8 @@ data class Player(
         val color: Color,
         var money: Int,
         var pos: Int,
-        var jailed: Boolean = false
+        var jailed: Boolean = false,
+        var freeJails: Int = 0 // Amount of "Get out of Jail free" cards this player has
 )
 
 data class Board(
@@ -91,6 +92,5 @@ enum class CardType {
     REPAIR,
     JAIL,
     FREE_JAIL,
-    PAY_OR_CHANCE,
     BIRTHDAY
 }

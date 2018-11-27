@@ -39,6 +39,7 @@ class MonopolyRules(players: Array<Player>)
                 return
             }
 
+            // TODO: If it's third double try, force him to pay caution
             history += PlayerUnjailed(state.playing)
         } else if (first == second && state.rolled == 3) {
             history += PlayerJailed(state.playing)
@@ -64,9 +65,9 @@ class MonopolyRules(players: Array<Player>)
                     val value: Int = when (case.type) {
                         PROPERTY -> {
                             var v = case.values[case.houses]
-                            val completeFamily = board.cases.filter { it.family == case.family }.find { it.owner != case.owner } == null
 
-                            if (completeFamily) {
+                            // Double base value if player has the entire familly
+                            if (case.houses == 0 && board.cases.filter { it.family == case.family }.find { it.owner != case.owner } == null) {
                                 v *= 2
                             }
 
@@ -91,8 +92,6 @@ class MonopolyRules(players: Array<Player>)
                 else
                     PlayerPickCommunityChestCard(state.playing, card.text)
 
-                // TODO: Create event
-
                 when (card.type) {
                     PAY -> {
                         history += PlayerPayToFreeParking(state.playing, card.params[0])
@@ -107,7 +106,7 @@ class MonopolyRules(players: Array<Player>)
                         move(PlayerMovementType.STRAIGHT, card.params[0])
                     }
                     MOVE_START -> {
-                        // TODO: Move to start
+                        board.cases.forEach { if (it.type == START) move(PlayerMovementType.MOVE, it.case) }
                     }
                     MOVE_OF -> {
                         move(PlayerMovementType.STRAIGHT, player.pos + card.params[0])
@@ -119,10 +118,7 @@ class MonopolyRules(players: Array<Player>)
                         history += PlayerJailed(state.playing)
                     }
                     FREE_JAIL -> {
-                        // TODO: Free jail
-                    }
-                    PAY_OR_CHANCE -> {
-                        // TODO: Pay or chance
+                        history += PlayerPickFreeJail(state.playing)
                     }
                     BIRTHDAY -> {
                         state.players.forEachIndexed { i, _ -> if (i != state.playing) history += PlayerPayToPlayer(i, state.playing, card.params[0]) }
@@ -178,7 +174,14 @@ class MonopolyRules(players: Array<Player>)
 
     fun buyHouses(case: Int, amount: Int)
     {
-        // TODO: "House line" mechanic !
+        val case = board.cases[case]
+        val family = board.cases.filter { it.family == case.family }
+
+        if (case.houses == 5 || family.any { it.houses + 1 < case.houses + amount }) {
+            return
+        }
+
+        history += PlayerBuildHouses(case.case, amount)
     }
 
     fun payCaution()
@@ -187,7 +190,17 @@ class MonopolyRules(players: Array<Player>)
             return
         }
 
-        history += PlayerPayToFreeParking(state.playing, board.jailCaution) // TODO: Move caution to json
+        history += PlayerPayToFreeParking(state.playing, board.jailCaution)
+        history += PlayerUnjailed(state.playing)
+    }
+
+    fun useFreeJail()
+    {
+        if (!player.jailed || player.freeJails <= 0) {
+            return
+        }
+
+        history += PlayerUseFreeJail(state.playing)
         history += PlayerUnjailed(state.playing)
     }
 

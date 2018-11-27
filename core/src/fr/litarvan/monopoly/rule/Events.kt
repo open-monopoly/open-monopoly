@@ -169,6 +169,30 @@ class PlayerPickCommunityChestCard(val player: Int, val card: String): Event()
     }
 }
 
+class PlayerPickFreeJail(val player: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
+        state.players[player].freeJails++
+    }
+}
+
+class PlayerUseFreeJail(val player: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
+        state.players[player].freeJails--
+    }
+}
+
+class PlayerBuildHouses(val case: Int, val amount: Int): Event()
+{
+    override fun apply(state: GameState)
+    {
+        Assets.board.cases[case].houses += amount
+    }
+}
+
 enum class PlayerMovementType
 {
     MOVE,
