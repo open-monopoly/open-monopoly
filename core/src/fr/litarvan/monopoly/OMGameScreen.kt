@@ -20,8 +20,8 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
 
     init
     {
-        val startCase = rules.board.cases.find { it.type == CaseType.START }!!.case
-        val startMoney = rules.board.startMoney
+        val startCase = Assets.board.cases.find { it.type == CaseType.START }!!.case
+        val startMoney = Assets.board.startMoney
 
         rules = MonopolyRules(arrayOf(
                 Player("Litarvan", Color.BLUE, startMoney, startCase),
