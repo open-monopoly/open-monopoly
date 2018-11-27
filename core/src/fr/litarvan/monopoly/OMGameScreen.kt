@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.VertexAttributes
 import com.badlogic.gdx.graphics.g3d.Material
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import fr.litarvan.monopoly.core.GameObject
 import fr.litarvan.monopoly.core.GameScreen
 import fr.litarvan.monopoly.core.act
@@ -17,6 +18,7 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
     private val board = GameObject("board")
     private val rules: MonopolyRules
     private val players = mutableListOf<GameObject>()
+    private val shapeRenderer = ShapeRenderer()
 
     init
     {
@@ -164,5 +166,33 @@ class OMGameScreen(game: OpenMonopoly) : GameScreen(game)
         if (rules.hasPoll) {
             update()
         }
+
+        val width = 215f
+        val height = 50f
+
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
+
+        rules.state.players.forEachIndexed { i, it ->
+            var x = 0f
+            var y = 0f
+
+            shapeRenderer.color = it.color
+            when (i) {
+                0 -> { y = Gdx.graphics.height - height }
+                1 -> { x = Gdx.graphics.width - width; y = Gdx.graphics.height - height }
+                2 -> { x = Gdx.graphics.width - width }
+            }
+
+            shapeRenderer.rect(x, y, width, height)
+        }
+
+        shapeRenderer.end()
+    }
+
+    override fun dispose()
+    {
+        super.dispose()
+
+        shapeRenderer.dispose()
     }
 }
